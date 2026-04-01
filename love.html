@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+
+    animation: fadeIn 1.5s ease;
+}
+
+/* PAGE ENTRY */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* MESSAGE BOX */
+.message {
+    font-size: 26px;
+    max-width: 600px;
+    line-height: 1.6;
+    text-shadow: 0 0 20px pink;
+}
+
+/* TYPING EFFECT */
+#text {
+    white-space: pre-line;
+}
+
+/* GLOW PULSE */
+.glow {
+    animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+    0%,100% { text-shadow: 0 0 10px pink; }
+    50% { text-shadow: 0 0 25px #ff4d6d; }
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: fixed;
+    font-size: 18px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="message glow">
+    <div id="text"></div>
+</div>
+
+<script>
+/* ROMANTIC MESSAGE */
+let message = "💖 I Love You Nakashathra 💖\n\nFrom the moment you came into my life, everything feels more beautiful 🥺✨\nYou are the most special person to me ❤️\n\n💖 From BUJJUUUU 💖";
+
+let i = 0;
+function typeEffect(){
+    if(i < message.length){
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeEffect, 35);
+    }
+}
+typeEffect();
+
+/* SOFT HEARTS */
+setInterval(()=>{
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.fontSize = (10 + Math.random()*15) + "px";
+
+    document.body.appendChild(h);
+
+    setTimeout(()=>h.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>

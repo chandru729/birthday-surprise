@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Nakashathra 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* TITLE */
+.name {
+    font-size: 30px;
+    margin-top: 30px;
+    text-shadow: 0 0 15px #ff4d6d;
+}
+
+/* MESSAGE */
+#typing {
+    font-size: 20px;
+    margin: 20px;
+    white-space: pre-line;
+}
+
+/* CAKE */
+.cake {
+    position: relative;
+    width: 180px;
+    height: 140px;
+    margin: 30px auto;
+}
+
+/* LAYERS */
+.layer {
+    position: absolute;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.layer-bottom {
+    bottom: 0;
+    height: 50px;
+    background: #ff6f91;
+}
+
+.layer-middle {
+    bottom: 40px;
+    height: 40px;
+    background: #ff85a2;
+}
+
+.layer-top {
+    bottom: 75px;
+    height: 35px;
+    background: #ffa3b1;
+}
+
+/* CANDLE */
+.candle {
+    position: absolute;
+    bottom: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 28px;
+    background: white;
+    border-radius: 3px;
+}
+
+/* FLAME */
+.flame {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 18px;
+    background: radial-gradient(circle, yellow, orange, red);
+    border-radius: 50%;
+    animation: flameFlicker 0.2s infinite alternate;
+}
+
+@keyframes flameFlicker {
+    from { transform: translateX(-50%) scale(1); opacity: 1; }
+    to { transform: translateX(-50%) scale(1.2); opacity: 0.7; }
+}
+
+/* CAKE NAME */
+.cake-name {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* PHOTOS */
+.photos img {
+    width: 110px;
+    height: 110px;
+    border-radius: 15px;
+    margin: 10px;
+    border: 3px solid white;
+}
+
+/* BUTTON */
+button {
+    padding: 12px 25px;
+    border: none;
+    background: white;
+    color: #ff4d6d;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* HEART FLOAT */
+.heart {
+    position: fixed;
+    animation: float 5s linear infinite;
+}
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+/* ULTRA TRANSITION */
+.ultra-out {
+    animation: ultraOut 1.2s forwards;
+}
+
+@keyframes ultraOut {
+    0% { opacity:1; transform:scale(1); filter:blur(0);}
+    100% { opacity:0; transform:scale(0.85); filter:blur(8px);}
+}
+
+/* HEART BURST */
+.burst-heart {
+    position: fixed;
+    font-size: 20px;
+    animation: burst 1s forwards;
+}
+@keyframes burst {
+    to { transform: translateY(-200px) scale(1.5); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h2 class="name">✨ Nakashathra Chandrasekar ✨</h2>
+<h3 id="typing"></h3>
+
+<div class="cake">
+
+    <div class="layer layer-bottom"></div>
+    <div class="layer layer-middle"></div>
+    <div class="layer layer-top"></div>
+
+    <div class="candle">
+        <div class="flame"></div>
+    </div>
+
+</div>
+
+<div class="photos">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+</div>
+
+<button onclick="ultraTransition()">💖 Open Surprise</button>
+
+<script>
+/* TEXT */
+let text="Happy Birthday Nakashathra 💖\nYou make my world more beautiful ✨";
+let i=0;
+(function t(){
+    if(i<text.length){
+        document.getElementById("typing").innerHTML+=text[i++];
+        setTimeout(t,40);
+    }
+})();
+
+/* FLOAT HEARTS */
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💖";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+},300);
+
+/* ULTRA TRANSITION */
+function ultraTransition(){
+
+    document.body.classList.add("ultra-out");
+
+    for(let i=0;i<20;i++){
+        let h=document.createElement("div");
+        h.className="burst-heart";
+        h.innerHTML="💖";
+        h.style.left=(window.innerWidth/2)+"px";
+        h.style.top=(window.innerHeight/2)+"px";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),1000);
+    }
+
+    setTimeout(()=>{
+        window.location.href="love.html";
+    },1200);
+}
+</script>
+
+</body>
+</html>
